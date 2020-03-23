@@ -1,0 +1,41 @@
+.notification{
+    width:100%;
+    background-color: #43425d;
+    padding:10px 20px 12px 10px;
+    display:none;
+  }
+  .notificationMessage{
+    opacity: 0.7;
+    font-family: SourceSansPro;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+  }
+  .btn-ok{
+    background-color: #465bce;
+    height:24px;
+    width:45px;
+    float:right;
+    font-family: SourceSansPro;
+    font-size: 11px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2.18;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    padding:0px;
+    text-decoration: none;
+    border-radius: 12px;  
+  }
+  @media(max-width: 992px){
+    .notification{
+      display:block;
+    }
+  }

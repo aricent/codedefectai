@@ -1,0 +1,63 @@
+.ErrorHeader{
+    object-fit: contain;
+  font-family: SourceSansPro;
+  font-size: 215px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+  color: #465bce;
+  margin-top:100px;
+  margin-bottom:25px;
+  height: 271px;
+  
+}
+.takeMeHome{
+    width: 167px;
+    height: 42px;
+    margin-top:60px;
+    margin-bottom:100px;
+    border-radius: 4px;
+    background-color: #465bce;
+    font-family: SourceSansPro;
+    font-size: 12px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+}
+.ErrorMessage{
+    
+    font-family: SourceSansPro;
+  font-size: 44px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.55;
+  letter-spacing: normal;
+  text-align: center;
+  color: #43425d;
+  height: 55px;
+  margin-top:25px;
+  margin-bottom:6px;
+}
+.GeneralMessage{
+    opacity: 0.7;
+  font-family: SourceSansPro;
+  font-size: 20px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: center;
+  color: #6d6c89;
+  height: 25px;
+  margin-top:6px;
+}

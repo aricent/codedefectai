@@ -1,0 +1,104 @@
+<!-- <app-nav-course></app-nav-course> -->
+<div class="row outerLayer" style="margin-left:0px;margin-bottom:0px;margin-top:12px;">
+    <!-- <div class="col-lg-12 padding-0" *ngIf="this._globalService.selectedProject!=null">
+        <ol class="breadcrumb margin-0 padding-0">
+            <li class="breadcrumb-item" (click)="loadHome()">Home</li>
+            <li class="breadcrumb-item">
+               
+                        <span (click)="loadCommitDetails()">
+                            {{this._globalService.selectedProject.ProjectName}}
+                        </span>
+                     
+            </li>
+            <li class="breadcrumb-item active">
+                <span>
+                  File
+                </span>
+            </li>
+        </ol>
+    </div>         -->
+    <div class="col-lg-12 col-sm-12 padding-0">
+      <div class="col-md-12 tabs">
+          <div class="back-txt" (click)="loadPreviousPage()"> 
+            <img src="../../assets/images/backArrow.svg" class="backarrow"/>
+            <span>Back</span>            
+          </div>
+      </div>
+  </div>
+</div>
+<div class="outerLayer">
+    <div class="row padding-0 margin-0">
+        <div class="col-lg-8 col-xs-12 padding-0" *ngIf="file_name!=null">
+             <div class="filename">Project Name :<span matTooltip="{{this._globalService.selectedProject.ProjectName}}" [matTooltipClass]="'tooltip-fileName'" matTooltipPosition="above">&nbsp;{{this._globalService.selectedProject.ProjectName}}</span></div>
+            <div class="filename">File Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<span matTooltip="{{getFullFileName(file_name)}}" [matTooltipClass]="'tooltip-fileName'" matTooltipPosition="above">&nbsp;{{getFileName(file_name)}}</span></div>
+            <div class="commitDetails">
+                <span class="commitId" >Commit ID: {{this._fileService.commitId}}</span>
+                <span class="commitTime">
+                    Commit Date: {{ getDate(timeStamp) }}| {{ getTime(timeStamp) }} <span style="font-size:12px">{{ getAMPM(timeStamp) }}</span>
+                </span>       
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-xs-12" style="margin-top:auto;margin-bottom:auto;" *ngIf="file_link!=null">
+            <button type="button" class="btn btn-default float-right margin-auto filehistorybutton" (click)="showFileHistsory(file_link)"> <img src="../../assets/images/viewFiles.svg" class="filehistoryicon"/>
+              FILE HISTORY
+            </button>
+        </div>
+      
+      <div class="col-lg-12 innerhighlight">
+        
+          <div class="padding-0 riskPrediction">
+            <div class="col-lg-6 padding-0 margin-0" *ngIf="this.prediction!=null">
+              Bug Risk Prediction: 
+              <span *ngIf="this.prediction==1">
+                Yes   <i class="bugIndicatorSquare icons" ></i>
+              </span>
+              <span *ngIf="this.prediction==0">
+                No  <i class="cleanIndicatorSquare icons" ></i>
+              </span>
+            </div>
+          </div>
+          <div class="confidenceScoreText" *ngIf='confidenceScore!=null'>
+              Confidence Score: <span class="confidenceScoreValue">{{confidenceScore}}%</span>
+          </div>
+          <div class="enableScroll">
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="feature">
+          <th mat-header-cell *matHeaderCellDef> Top Features </th>
+          <td mat-cell *matCellDef="let row">
+            <span>{{row.name}}<span class="featureDescription" *ngIf="'featureDescription.get(row.key)'!='NA'"> <br/>{{featureDescription.get(row.key)}}</span></span>
+            <!-- <span *ngIf="'featureDescription.get(row.key)'=='NA'">{{row.name}}</span> -->
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="value">
+          <th mat-header-cell *matHeaderCellDef> Value</th>
+          <td mat-cell *matCellDef="let row">
+            <span *ngIf='row.unit.toLowerCase()=="boolean"'>
+                <span *ngIf='!!row.value==true'>Fixed</span>
+                <span *ngIf='!!row.value==false'>Not Fixed</span>
+            </span>
+            <span *ngIf='row.unit.toLowerCase()!="boolean"'>{{row.value}} <span *ngIf="row.unit!='Number'" class="units">{{row.unit}}</span></span>
+            </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="graphx">
+          <th mat-header-cell *matHeaderCellDef>
+            <span *ngIf="this.prediction==1" class="riskheader"> <i class="highRiskSquare" ></i> High Bug Risk</span>
+            <span *ngIf="this.prediction==0" class="riskheader"> <i class="lowIndicatorSquare" ></i> Low Bug Risk</span> 
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <div class="buggyWeight" *ngIf="row.label==1"><div [ngStyle]='getBugWeightStyles(row.coefficient)'></div><span style="position:absolute;top:3px;">{{row.coefficient}}</span></div>
+            <div class="buggyWeight" *ngIf="row.label==0"><div [ngStyle]='getCleanWeightStyle(row.coefficient)'></div><span style="position:absolute;top:3px;">{{row.coefficient}}</span></div>
+          </td>
+         
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+
+    </div>  
+</div>
+</div>

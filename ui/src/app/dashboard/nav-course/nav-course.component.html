@@ -1,0 +1,13 @@
+
+    <div class="row padding-lr-7" style="margin-left:0px;margin-bottom:0px;margin-top:12px;" *ngIf="this._globalService.selectedProject!=null">
+        <div class="col-lg-12 padding-0">
+            <ol class="breadcrumb margin-0 padding-0">
+                <li class="breadcrumb-item" (click)="loadHome()">Home</li>
+                <li class="breadcrumb-item active">
+                    <span>
+                        {{this._globalService.selectedProject.ProjectName}}
+                    </span>
+                </li>
+            </ol>
+        </div>        
+    </div>

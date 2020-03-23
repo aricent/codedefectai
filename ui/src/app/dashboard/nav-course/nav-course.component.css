@@ -1,0 +1,17 @@
+.breadcrumb{
+    background-color:inherit;
+    font-family: SourceSansPro;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #4660f2;
+    cursor:pointer;
+}
+.active{
+    color: #5a6872;
+    cursor:text;
+}

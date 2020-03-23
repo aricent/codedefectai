@@ -1,0 +1,222 @@
+<app-dashboard-nav-bar></app-dashboard-nav-bar>
+<app-nav-course></app-nav-course>
+<div class="commitdetailsTable"> 
+  <div class="row padding-0 margin-0">    
+    <div class="innerhighlight col-xs-12">
+      <div class="enableScroll">
+        <table mat-table
+        [dataSource]="dataSource" multiTemplateDataRows
+        class="mat-elevation-z8" matSort matSortActive="timestamp" (matSortChange)="sortData($event)">
+   <!-- Commit Id Column -->
+   <ng-container matColumnDef="commitId">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header> COMMIT ID </th>
+     <td mat-cell *matCellDef="let row" > 
+         <div *ngIf="row.preds.length==1">
+            <span *ngIf="row.commitId.length>=8">{{row.commitId.substring(0,8)}}... </span>
+            <span *ngIf="row.commitId.length<8">{{row.commitId}}</span>
+           </div>
+           <div *ngIf="row.preds.length>1">
+             <span *ngIf="row.commitId.length>=8">{{row.commitId.substring(0,8)}}... </span>
+             <span *ngIf="row.commitId.length<8">{{row.commitId}}</span>
+             
+               <span class="commitLength">({{row.total_count}}) <img *ngIf="!(this._globalService.expandedElement!=null && this._globalService.expandedElement==row)" src="../../assets/images/expandable-icon.svg" height="18px" width="18px" style="margin-left:5px;float:right;margin-right:30%" (click)="expandedElementfn(row)"/>
+                <img *ngIf="this._globalService.expandedElement!=null && this._globalService.expandedElement==row" src="../../assets/images/collapsable-icon.svg" height="18px" width="18px" style="margin-left:5px;float:right;margin-right:30%" (click)="expandedElementfn(row)"/>
+              </span>
+               
+             </div>     
+     </td>
+   </ng-container>
+ 
+   <!-- Commit Time Column -->
+   <ng-container matColumnDef="timestamp">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header> COMMIT TIME </th>
+     <td mat-cell *matCellDef="let row"> 
+       {{ getDate(row.preds[0].timestamp)  }} | {{ getTime(row.preds[0].timestamp) }} <span class="ampm"style="font-size:12px">{{ getAMPM(row.preds[0].timestamp) }} </span> 
+      </td>
+   </ng-container>
+ 
+   <!--  File Name Column -->
+   <ng-container matColumnDef="file_name">
+       <th mat-header-cell *matHeaderCellDef>FILE NAME </th>
+       <td mat-cell *matCellDef="let row">
+          <div *ngIf="row.preds.length==1" (click)=loadBugRiskPrediction(row)>
+            
+            <span *ngIf="row.preds[0].file_name.length>120" matTooltip="...{{row.preds[0].file_name.slice(row.preds[0].file_name.length-120,row.preds[0].file_name.length)}}" [matTooltipClass]="'my-tooltip'" matTooltipPosition="above">
+              ...{{row.preds[0].file_name.slice(row.preds[0].file_name.length-50,row.preds[0].file_name.length)}}
+            </span>
+
+            <span *ngIf="row.preds[0].file_name.length>60 && row.preds[0].file_name.length<=120" matTooltip="{{row.preds[0].file_name}}" [matTooltipClass]="'my-tooltip'" matTooltipPosition="above">
+              ...{{row.preds[0].file_name.slice(row.preds[0].file_name.length-60,row.preds[0].file_name.length)}}
+            </span>
+
+            <span *ngIf="row.preds[0].file_name.length<=60" matTooltip="{{row.preds[0].file_name}}" [matTooltipClass]="'my-tooltip'" matTooltipPosition="above">
+              {{row.preds[0].file_name}}
+            </span>
+       </div>
+       <div *ngIf="row.preds.length>1">
+           -
+         </div>
+      
+        </td>
+     </ng-container>
+<!--  Confidence Score Column -->
+     <ng-container matColumnDef="confidenceScore">
+        <th mat-header-cell *matHeaderCellDef>CONFIDENCE SCORE</th>
+        <td mat-cell *matCellDef="let row">                       
+            <div *ngIf="row.preds.length==1">
+                {{padZero(row.preds[0].confidencescore)}}%
+            </div>
+            <div *ngIf="row.preds.length>1">
+                -
+              </div>
+         </td>
+    </ng-container>
+ 
+   <!-- Prediction Column -->
+   <ng-container matColumnDef="prediction">
+     <th mat-header-cell *matHeaderCellDef mat-sort-header><span style="position:relative;"><img class="information" src="../../assets/images/information.svg" matTooltip="{{_globalService.disclaimerMessage}}" [matTooltipClass]="'info-tooltip'" matTooltipPosition="above"/></span> BUG RISK PREDICTION </th>
+     <td mat-cell *matCellDef="let row">
+      <div *ngIf="row.preds.length==1"> 
+        <div class="" style="width:100%;">
+          <div style="float:left;position:relative">
+            <i class="bugIndicatorSquare" *ngIf="row.preds[0].prediction==1"></i>
+            <i class="cleanIndicatorSquare" *ngIf="row.preds[0].prediction==0"></i>
+          </div>
+          <div style="float:left;margin-left:5px" *ngIf="row.preds[0].prediction==1">Yes</div>
+          <div style="float:left;margin-left:5px" *ngIf="row.preds[0].prediction==0">No</div>          
+        </div>    
+      </div>
+      <div *ngIf="row.preds.length>1">
+          <div style="width:100%;">
+            <div style="float:left;position:relative">
+              <i class="bugIndicatorSquare" *ngIf="row.prediction_count>0"></i>
+              <i class="cleanIndicatorSquare" *ngIf="row.prediction_count==0"></i>
+            </div>
+          </div>
+          <div style="float:left;margin-left:5px;" *ngIf="row.prediction_count>0">Yes ({{row.prediction_count}}/{{row.total_count}})</div>   
+          <div style="float:left;margin-left:5px;" *ngIf="row.prediction_count==0">No</div>   
+      </div>
+      <!--<div *ngIf="row.preds.length>1">
+          <div style="width:100%;">
+            <div style="float:left;position:relative">
+              <i class="bugIndicatorSquare" *ngIf="getBuggyCount(row)>0"></i>
+              <i class="cleanIndicatorSquare" *ngIf="getBuggyCount(row)==0"></i>
+            </div>
+          </div>
+          <div style="float:left;margin-left:5px;" *ngIf="getBuggyCount(row)>0">Yes ({{getBuggyCount(row)}}/{{row.preds.length}})</div>   
+          <div style="float:left;margin-left:5px;" *ngIf="getBuggyCount(row)==0">No</div>   
+      </div>-->
+    </td>
+   </ng-container>
+   
+   <!-- COMMIT DETAILS Column -->
+   <ng-container matColumnDef="commitDetails">
+     <th mat-header-cell *matHeaderCellDef> COMMIT DETAILS </th>
+     <td mat-cell *matCellDef="let row" class="view">
+        <div *ngIf="row.preds.length==1" (click)=viewFile(row.preds[0].file_link)>
+            View
+        </div>
+        <div *ngIf="row.preds.length>1" (click)=viewFileByCommitId(this._globalService.gitbaseurl,row.commitId)>
+          View
+        </div>
+      </td>
+   </ng-container>
+ 
+ 
+   <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+   <ng-container matColumnDef="expandedDetail">
+     
+     <td mat-cell *matCellDef="let element"  [attr.colspan]="displayedColumns.length" [ngClass]="(this._globalService.expandedElement!=null && this._globalService.expandedElement== element)?'expandedRow':''" [@detailExpand]="element == this._globalService.expandedElement ? 'expanded' : 'collapsed'" >
+        <table mat-table [dataSource]="getDataSource(element.preds)" class="mat-elevation-z8" width="100%" id="innerTable">
+               <!-- CommitTime Column -->
+               <ng-container matColumnDef="commitId">
+                   <th mat-header-cell *matHeaderCellDef mat-sort-header> COMMIT ID</th>
+                   <td mat-cell *matCellDef="let row"> </td>
+                 </ng-container>
+               
+                 <!-- CommitTime Column -->
+                 <ng-container matColumnDef="timestamp">
+                   <th mat-header-cell *matHeaderCellDef mat-sort-header> COMMIT TIME </th>
+                   <td mat-cell *matCellDef="let row">
+                       {{ getDate(row.timestamp) }} | {{ getTime(row.timestamp) }} <span style="font-size:12px">{{ getAMPM(row.timestamp) }} </span>  
+                      </td>
+                 </ng-container>
+               
+                 <!--  File Name Column -->
+                 <ng-container matColumnDef="file_name">
+                     <th mat-header-cell *matHeaderCellDef mat-sort-header>FILE NAME </th>
+                     <td mat-cell *matCellDef="let row" (click)=loadBugRiskPrediction(row)>
+                          
+                        <span *ngIf="row.file_name.length>120" matTooltip="...{{row.file_name.slice(row.file_name.length-120,row.file_name.length)}}" [matTooltipClass]="'my-tooltip'" matTooltipPosition="above">
+                            ...{{row.file_name.slice(row.file_name.length-50,row.file_name.length)}}
+                        </span>
+                      
+                          <span *ngIf="row.file_name.length>60 && row.file_name.length<=120" matTooltip="{{row.file_name}}" [matTooltipClass]="'my-tooltip'" matTooltipPosition="above">
+                              ...{{row.file_name.slice(row.file_name.length-50,row.file_name.length)}}
+                          </span>
+                          <span *ngIf="row.file_name.length<=60"matTooltip="{{row.file_name}}" [matTooltipClass]="'my-tooltip'" matTooltipPosition="above">
+                              {{row.file_name}}
+                          </span>
+                      </td>     
+                 </ng-container>
+                 <!--  Confidence Score Column -->
+                 <ng-container matColumnDef="confidenceScore">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>CONFERENCE SCORE</th>
+                    <td mat-cell *matCellDef="let row">                       
+                        {{padZero(row.confidencescore)}}%
+                     </td>
+                </ng-container>
+                   
+                 <!-- Prediction Column -->
+                 <ng-container matColumnDef="prediction">
+                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Bug Risk Prediction </th>
+                   <td mat-cell *matCellDef="let row">
+                     <div style="width:100%;">
+                      <div style="float:left;position:relative">
+                        <i class="bugIndicatorSquare" *ngIf="row.prediction==1"></i>
+                        <i class="cleanIndicatorSquare" *ngIf="row.prediction==0"></i>
+                      </div>
+                    </div>
+                    <div style="float:left;margin-left:5px;" *ngIf="row.prediction==1">Yes</div>
+                    <div style="float:left;margin-left:5px;" *ngIf="row.prediction==0">No</div>
+                   </td>
+                 </ng-container>
+                 
+                 <!-- Commit Details Column -->
+                 <ng-container matColumnDef="commitDetails">
+                   <th mat-header-cell *matHeaderCellDef> Commit Details </th>
+                   <td mat-cell *matCellDef="let row" (click)=viewFile(row.file_link) class="view">View</td>                   
+                 </ng-container>
+            
+             <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
+             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+             
+           </table>
+           <div class="col-lg-12">
+              <button type="button" class="btn viewFiles float-right font-white" (click)=viewAllFiles(element) ><span class="viewAllFiles">VIEW ALL FILES</span></button>
+            </div>
+     </td>
+   </ng-container>
+ 
+   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+   <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+       class="element-row" [ngClass]="(this._globalService.expandedElement!=null && this._globalService.expandedElement== element)?'selectedCommitRow':''"
+       [class.expanded-row]="this._globalService.expandedElement === element"
+       >
+   </tr>
+   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+ </table>
+</div>
+</div>
+    <div class="col-lg-12 margin-0 padding-0" [ngClass]="(this.data!=null)? 'hide' : ''">            
+      <mat-paginator #paginator  
+        [length]="totalLength"   
+        [pageIndex]="pageIndex"   
+        [pageSize]="pageSize"      
+        [pageSizeOptions]="[10, 25,100]"
+        [showFirstLastButtons]="true"
+        (page)="getServerData($event)">
+        
+      </mat-paginator>           
+    </div>  
+</div>

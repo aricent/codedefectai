@@ -1,0 +1,108 @@
+
+.navmenu{
+  min-height: 80px;
+  background-color: #eef2ff!important;;
+}
+  .projectTitle{
+    
+    font-family: SourceSansPro;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #43425d;
+    display:inline-block;
+    padding-left:0px;
+    min-width:40%;
+    display:inline-block;
+    float:left;
+  }
+  .dashboard-nav{
+    padding-top:13px!important;
+    padding-left:0px;
+  }
+  .summary{
+    padding:0px;
+  margin-top:10px!important;
+  font-family: SourceSansPro;
+  font-size: 11px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.18;
+  letter-spacing: normal;
+  text-align: left;
+  color: #6d6c89;
+  height:25px;
+  margin-bottom:12px;
+  }
+.projectDetails{
+    float:right;
+    display:inline-block;
+    height: auto;
+    font-family: SourceSansPro;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.23;
+    letter-spacing: normal;
+    text-align: center;    
+    color: #6d6c89;
+}
+@media (max-width: 992px) {
+  .projectDetails {
+     float: left;
+     font-size:12px;
+   }
+}
+
+ 
+.prediction{
+  text-align:center!important;
+  border-right:1px solid #6d6c89;
+  padding-right:25px;
+}
+.commit{
+  text-align:center!important;
+  border-right:1px solid #6d6c89;
+  padding-right:25px;
+  padding-left:25px;
+}
+.totalFiles{
+  text-align:left!important;
+  padding-left:25px;
+}
+
+.projectData{
+    font-weight: bold;
+    color: #43425d;
+}
+.viewTrend{
+  border-radius: 4px;
+  border: solid 0.7px #4660f2!important;
+  margin-left:12px;
+  cursor:pointer;
+}
+.ViewTrendTxt{
+  font-family: SourceSansPro;
+  font-size: 11px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.18;
+  letter-spacing: normal;
+  text-align: center;
+  color: #43425d;
+  margin-right:9.7px;
+  
+}
+.trendImage{
+  height:8px;
+  width:14.5px;
+  margin-left:9px;
+  margin-right:8.6px;
+}

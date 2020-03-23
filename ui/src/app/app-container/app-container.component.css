@@ -1,0 +1,9 @@
+.appcontainer{
+    min-height:82vh;margin-bottom:60px!important;
+}
+@media(max-width:768px){
+    .appcontainer{
+        margin-bottom:75px!important;
+    }
+    
+}

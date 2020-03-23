@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5">
+    <defs>
+        <style>
+            .cls-1{fill:#4660f2}
+        </style>
+    </defs>
+    <path id="Sort" d="M0-5l5 5 5-5z" class="cls-1" transform="translate(0 5)"/>
+</svg>

@@ -1,0 +1,58 @@
+<div class="row margin-0 padding-lr-7 navmenu" *ngIf="this._globalService.selectedProject!=null">
+  
+  <div class="col-lg-12 padding-0 margin-0">
+      <div class="row margin-0 dashboard-nav">
+          <div class="col-lg-12 col-sm-12 padding-0 margin-0">
+              <span class="col-lg-12 summary">
+                      Commits : Last 15 Days
+              </span>
+      
+            <div class="col-lg-12 padding-0" >
+              <div  class="projectTitle" style="display:inline-block;min-width:40%" >
+                  {{this._globalService.selectedProject.ProjectName}}                 
+                  <button type="button" class="btn padding-0 viewTrend" (click)=loadTrends()>
+                      <span class="ViewTrendTxt">
+                        <img src="../../assets/images/trend-icon.png" class="trendImage"/> VIEW TREND
+                      </span>
+                    </button>
+              </div>
+               
+                
+               
+                <span class="projectDetails">
+               
+                
+                <span class="prediction margin-auto">
+                    Bug Risk Predicted :  <span class="projectData">{{this._globalService.selectedProject.BuggyPredictions}} Files</span>
+                </span>
+                <span class="commit margin-auto">
+                    Total Commits :         
+                    <span class="projectData">{{this._globalService.selectedProject.TotalCommitsForPrediction}}</span>
+                </span>
+                <span class="totalFiles margin-auto">
+                    Total {{this._globalService.selectedProject.CodingLanguage}} Files :        
+                    <span class="projectData">{{this._globalService.selectedProject.TotalFilesForPrediction}}</span>
+                </span>
+              </span>
+                
+            </div>
+            <!-- <div class="col-lg-2 col-md-12 padding-0 projectDetails predictionAndCommit margin-auto">          
+                Bug Risk Predicted :  <span class="projectData">{{this._globalService.selectedProject.BuggyPredictions}} Files</span>
+            </div>
+            <div class="col-lg-1 col-md-12  padding-0 projectDetails predictionAndCommit margin-auto">
+                Total Commits :         
+                <span class="projectData">{{this._globalService.selectedProject.TotalCommitsForPrediction}}</span>
+            </div>
+            <div class="col-lg-1 col-md-12 padding-0 projectDetails margin-auto">
+                Total {{this._globalService.selectedProject.CodingLanguage}} Files :        
+                <span class="projectData">{{this._globalService.selectedProject.TotalFilesForPrediction}}</span>
+            </div> -->
+             
+          </div>
+        
+          
+        </div>
+  </div>
+ 
+ 
+</div>

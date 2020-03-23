@@ -1,0 +1,140 @@
+.bottom-navbar
+{
+  width: 100%;
+  min-height: 44px;
+  background-color: #ffffff;
+  padding-left:25%;
+  padding-right:25%;
+  position: absolute;
+  bottom:0;
+}
+  
+.logo {
+    font-size: 20px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.0;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    
+  }
+
+.copyright-logo
+{
+  font-family: SourceSansPro;
+  font-size: 11px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: #6d6c89;
+  margin-top:10.5px;
+  margin-bottom:10.5px;
+  cursor: context-menu;
+  display:inline-block;
+  width:20%;
+}
+.nav-item{
+  margin-top:10.5px;
+  margin-bottom:10.5px;
+  font-family: SourceSansPro;
+  font-size: 11px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.18;
+  letter-spacing: normal;
+  text-align: right;
+  color: #6d6c89!important;
+  cursor: pointer;
+}
+.nav-link{
+  padding:0px;
+  margin:auto;
+  cursor: pointer;
+}
+.Language-logo{
+  font-family: SourceSansPro;
+  font-size: 11px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.18;
+  letter-spacing: normal;
+  text-align: left;
+  color: #6d6c89;
+  margin-top:10.5px;
+  margin-bottom:10.5px;
+}
+.nav-footer{
+  
+  font-family: SourceSansPro;
+  font-size: 11px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: #6d6c89;
+  cursor: pointer;
+  display:inline-block;
+  width:100%;
+}
+.container{
+  min-height: 44px;
+  cursor: pointer;
+}
+.nav{
+  width: 20%;display:inline-block;
+}
+.privacy{
+  width:20%;display:inline-block;
+}
+
+ul {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  margin:0px;
+  padding-left:0px;
+}
+ul li {
+  display: table-cell;
+  
+}
+
+
+@media (max-width: 992px) {
+   .bottom-navbar
+  {
+    padding-left:10%;
+    padding-right:10%;
+  }
+}
+@media(max-width:768px){
+ .nav{
+   width:23%;
+ }
+ .privacy{
+   width:30%;
+ }
+ .copyright-logo{
+   width:100%;
+   cursor:context-menu;
+ }
+  .bottom-navbar
+  {
+    padding-left:0%;
+    padding-right:0%;
+  }
+}
+/* @media (min-height: 700px) {
+  footer {
+    position: static!important;
+  }
+} */

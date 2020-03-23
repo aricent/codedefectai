@@ -1,0 +1,24 @@
+FROM ubuntu:18.04
+RUN apt-get update -y 
+RUN apt-get install -y apt-utils
+RUN apt-get install -y python3-pip
+RUN apt-get install -y python3-dev 
+RUN apt-get install -y python3-mysqldb
+RUN apt-get install -y libmysqlclient-dev
+
+RUN mkdir /cdpweb
+ADD . /cdpweb/
+
+COPY ./requirements.txt /cdpweb/requirements.txt
+COPY ./BaltimoreCyberTrustRoot.crt.pem /cdpweb/BaltimoreCyberTrustRoot.crt.pem
+COPY . /cdpweb
+WORKDIR /cdpweb
+RUN pip3 install -r requirements.txt
+
+STOPSIGNAL SIGINT
+
+CMD [ "python3", "cdpweb/manage.py", "check" ]
+CMD [ "python3", "cdpweb/manage.py", "migrate" ]
+
+CMD [ "python3", "cdpweb/manage.py", "runserver", "0.0.0.0:5000" ]
+

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1{fill:#4660f2;stroke:#4660f2;stroke-linecap:round;stroke-linejoin:round;stroke-width:.5px}.cls-2,.cls-4{fill:none}.cls-2{stroke:rgba(109,108,137,.1)}.cls-3{stroke:none}
+        </style>
+    </defs>
+    <g id="Group_1633" data-name="Group 1633" transform="rotate(180 132.5 245.5)">
+        <g id="Group_2028" data-name="Group 2028">
+            <g id="Group_2034" data-name="Group 2034">
+                <path id="Path_3" d="M113.031 3.785L116.45.366a.214.214 0 1 0-.3-.3l-3.571 3.571a.214.214 0 0 0 0 .3l3.571 3.569a.216.216 0 0 0 .151.063.209.209 0 0 0 .151-.063.214.214 0 0 0 0-.3z" class="cls-1" data-name="Path 3" transform="rotate(-90 421.757 172.756)"/>
+                <g id="Rectangle_1845" class="cls-2" data-name="Rectangle 1845" transform="translate(241 467)">
+                    <rect width="24" height="24" class="cls-3" rx="4"/>
+                    <rect width="23" height="23" x=".5" y=".5" class="cls-4" rx="3.5"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

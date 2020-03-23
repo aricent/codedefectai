@@ -1,0 +1,38 @@
+<div class="trendAnalysis">
+    <div class="row padding-0 margin-0">
+      <div class="col-lg-12 col-sm-12 padding-0">
+          <div class="col-md-12 tabs">
+              <div class="back-txt" (click)="loadCommitDetails()"> 
+                <img src="../../assets/images/backArrow.svg" class="backarrow"/>
+                <span>Back</span>            
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-12 trendAnalysisheading">
+        Multivariate Trend Analysis
+      </div>
+      <div class="col-lg-12 innerhighlight">
+          <div class="project" *ngIf="this._globalService.selectedProject!=null">
+            {{this._globalService.selectedProject.ProjectName}}
+          </div>
+          
+          <div class="highBugRisk" *ngIf='!graphloading'>
+            High Bug Risk (H)
+            <span class="highBugRiskIndicator"></span>
+          </div>
+          
+          <div class="lowBugRisk" *ngIf='!graphloading'>
+            <span class="lowBugRiskIndicator"></span>
+            Low Bug Risk (L)
+          </div>
+
+          <div id="boxPlot">
+                       
+          </div>
+          <div class="xAxislabel" *ngIf='!graphloading'>
+             <b>TOP 5 FEATURES</b> 
+          </div>
+      </div>
+        
+</div>
+</div>

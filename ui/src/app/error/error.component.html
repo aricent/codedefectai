@@ -1,0 +1,19 @@
+<div style="width:100vw;text-align:center">
+    <div class="ErrorHeader">
+        <span *ngIf="_errorService.ErrorNumber!=null">{{_errorService.ErrorNumber}}</span>
+        <span *ngIf="_errorService.ErrorNumber==null">404</span>
+      </div>
+    <div class="ErrorMessage">
+        <span *ngIf="_errorService.ErrorStatus!=null">{{_errorService.ErrorStatus}}</span>
+        <span *ngIf="_errorService.ErrorStatus==null">Page Not Found</span>
+    </div>
+    <div class="GeneralMessage">
+        <span *ngIf="_errorService.ErrorMessage!=null">{{_errorService.ErrorMessage}}</span>
+        <span *ngIf="_errorService.ErrorMessage==null">It seems like the page you are looking for is no longer here.</span>
+      </div>
+    <div>
+        <button type="button" class="btn btn-default takeMeHome" (click)=loadHome()>
+          TAKE ME HOME
+        </button>
+    </div>
+</div>

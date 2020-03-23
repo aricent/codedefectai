@@ -1,0 +1,142 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+/* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html{
+    position: relative;
+}
+html,body { min-height: 100% !important;}
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+@font-face {
+    font-family: SourceSansPro;
+    src: url(/assets/fonts/SourceSansPro-Regular.ttf);
+  }
+body{
+    background-color: #f9fbff;
+    font-family: SourceSansPro;
+    height: 100%;
+}
+.row{
+    margin:3%;
+}
+.pagehighlight{
+    background-color:whitesmoke;padding: 5px;margin:15px;
+}  
+.bg-black{
+    background-color: #202020!important;
+}
+.Centeralign{
+    text-align: center;
+}
+.margin-tb-15{
+    margin-top:15px;
+    margin-bottom:15px;
+}
+.margin-lr-2{
+    margin-left:2%;
+    margin-right:2%;
+}
+.margin-lr-5{
+    margin-left:5%;
+    margin-right:5%;
+}
+.padding-lr-7{
+    padding-left:7%;
+    padding-right:7%;
+}
+.padding-15px{
+    padding:15px!important;
+}
+.padding-lr-9{
+    padding-left:9%!important;
+    padding-right:9%!important;
+}
+.padding-lr-12{
+    padding-left:10%!important;
+    padding-right:10%!important;
+}
+.margin-0{
+    margin:0px!important;
+}
+.margin-tb-0{
+    margin-top:0px;
+    margin-bottom:0px;
+}
+.padding-0{
+    padding:0px!important;
+}
+.padding-lr-15px{
+    padding-left:15px!important;
+    padding-right:15px!important;
+}
+.padding-lr-5{
+    padding-left:15%!important;
+    padding-right:15%!important;
+}
+.padding-lr-20{
+    padding-left:20px!important;
+    padding-right:20px!important;
+}
+.font-small{
+    font-size:11px;
+}
+.font-large
+{
+    font-size:24px;
+}
+.font-gray{
+    color:rgb(163, 163, 163);
+}
+.font-white{
+    color:white;
+}
+.font-red{
+  color: #e76e3c;
+  border-radius: 2px;
+}
+.font-green{
+    border-radius: 2px;
+    color: #16a085;
+}
+.font-bold{
+    font-weight: bold;
+}
+.padding-lr-0{
+    padding-left:0px;
+    padding-right:0px;
+}
+.margin-auto{
+    margin:auto;
+}
+.color-white{
+    color:white!important;
+}
+.float-right{
+    float:right;
+}
+.margin-tb-20{
+    margin-top:20px;margin-bottom:20px;
+}
+.padding-tb-20{
+    padding-top:20px;padding-bottom:20px;
+}
+.bugIndicatorSquare{
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: #e76e3c;
+    display:inline-block;
+}
+.cleanIndicatorSquare{
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: #16a085;
+    display:inline-block;
+}

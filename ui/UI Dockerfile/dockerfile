@@ -1,0 +1,14 @@
+# First stage image labelled as node-angular-cli
+FROM nginx:latest
+LABEL authors="Altran"
+
+# Copying dist folder 
+COPY dist/ /var/www/
+
+RUN apt-get update -y
+RUN apt-get upgrade -y
+
+COPY default /etc/nginx/conf.d/default.conf
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

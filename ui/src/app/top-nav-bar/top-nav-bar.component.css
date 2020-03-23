@@ -1,0 +1,43 @@
+
+.navbar{
+    padding:12px 30px 12px 30px;
+    background: white;
+  }
+  .margin-0{
+    margin:0px!important;
+  }
+  .padding-0{
+    padding:0px!important;
+  }
+  
+  .logo {
+    display:inline-block;
+  }
+  .logo-container {
+    font-size: 18px;
+    padding-left:15px;    
+    text-align: center;    
+}
+.ai-logo{
+  font-family: SourceSansPro;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: right;
+  color: #43425d;
+  display:inline-block;
+}
+.cdp-logo{
+  font-family: SourceSansPro;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: right;
+  color: #43425d;
+}

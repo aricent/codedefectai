@@ -1,0 +1,28 @@
+#loading {
+    -webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+    from {
+            -webkit-transform: rotate(0deg);
+    }
+    to {
+            -webkit-transform: rotate(359deg);
+    }
+}
+.loaderMessage{
+    display:block;
+    margin: 10px auto ;
+    position:relative;
+    top:40%;
+    font-family: SourceSansPro;
+    font-size: 16px!important;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+

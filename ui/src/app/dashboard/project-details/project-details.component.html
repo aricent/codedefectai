@@ -1,0 +1,74 @@
+<div class="row margin-0 home">
+    <div class="row Info-head">
+      <div class="col-lg-12 Code-Defect-AI">Code Defect <span class="AI">AI </span></div>
+      <div class="col-lg-12 head-description">Machine learning classifier that predicts files carrying a higher risk  of a bug based on historical commits.</div>
+      <div class="col-lg-12 designs-block">
+          <img src="../../assets/images/HomePageAnimation.gif" height="150px" width="250px"/>
+      </div>
+    </div>
+    
+    <div class="row margin-0 projectcards" style="width:100%;">
+      <div class="col-lg-4 margin-tb-15 page-title" *ngFor="let item of projects">
+        <div class="card-body margin-auto padding-15px" (click)="loadCommitDetails(item)">
+          <div class="row margin-tb-15">
+              <div class="col-8 project">              
+                {{item.ProjectName}}              
+              </div>
+              <div class="col-4 language">
+                {{item.CodingLanguage}}
+              </div>
+              
+              <div class="col-lg-12 predictionDetails" style="margin-top:50px;">
+                  <div class="table-responsive">          
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th class="bug-prediction">High Bug Risk Prediction</th>
+                            <th class="totalFiles">
+                              Total
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr height='30px'>
+                            <td class="NoOfFiles">
+                                {{item.BuggyPredictions}} <span class="files"> Files</span>
+                            </td>
+                            <td class="TotalNoOfFiles"> {{item.TotalFilesForPrediction}} 
+                                <span class="files"> Files</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div>
+                          <span class="last60days">Last 15 Days</span>
+                      </div>
+                  </div>  
+                  <!-- <div class="bugRiskPrediction">
+                    High Bug Risk Prediction
+                    <div class="NoOfFiles">
+                        {{item.BuggyPredictions}} <span class="files">Files</span>
+                    </div> 
+                    <div class="last60days">Last 15 Days</div>   
+                  </div>
+                  <div class="TotalDetails">
+                      <div class="">Total</div>
+                      <div class="NoOfFiles">
+                          {{item.TotalFilesForPrediction}} 
+                          <span class="files">Files</span>
+                      </div>
+                  </div> -->
+              </div>
+              
+              
+        </div>
+      </div>
+      </div>
+      <div class="col-lg-12 disclaimer" *ngIf='disclaimer!=null && disclaimer==true && _globalService.disclaimerMessage!=null'>
+          <div class="noteMessage">
+              <div class="disclaimer-text">{{_globalService.disclaimerMessage}}</div> 
+              <div class="closeContainer"><button type="button" class="btn btn-close" (click)="hideDisclaimer()">CLOSE</button></div>
+              <!-- <div class="closeButton" (click)="hideDisclaimer()"><img src="../../assets/images/closeIcon.svg" class="backarrow"/></div> -->
+          </div>
+      </div>  
+  </div> 
+</div>
