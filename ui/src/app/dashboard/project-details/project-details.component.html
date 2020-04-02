@@ -40,7 +40,7 @@
                         </tbody>
                       </table>
                       <div>
-                          <span class="last60days">Last 15 Days</span>
+                          <span class="last60days" *ngIf="item.ProjectName !='CoreFX'">Last 15 Days</span>
                       </div>
                   </div>  
                   <!-- <div class="bugRiskPrediction">
