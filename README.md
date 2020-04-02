@@ -1,4 +1,4 @@
-﻿# Code Defect AI (Documentation) [Altran](https://www.altran.com)
+﻿# Code Defect AI (Documentation)                        [Altran](https://www.altran.com)
 
 ## Description
 Code Defect AI is a machine learning classifier that predicts committed source code files carrying a higher risk of a bug based on historical commits. 
