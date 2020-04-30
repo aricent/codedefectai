@@ -25,7 +25,7 @@
     "bootstrap": "^4.3.1",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "moment": "^2.24.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
