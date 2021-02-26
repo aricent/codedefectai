@@ -1,7 +1,7 @@
 ## This file may be used to create an environment using:
 ## $ conda create --name <env> --file <this file>
 ## platform: win-64
-aiohttp==3.5.4
+aiohttp==3.7.4
 mlxtend==0.17.0
 gitdb2==2.0.5
 gitpython==2.1.11
